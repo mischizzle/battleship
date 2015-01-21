@@ -26,7 +26,7 @@ Game.prototype.shootTarget = function(coordinates, element) {
 
 Game.prototype.initBoard = function(player) {
 
-  var playerBoard = new Board();
+  var playerBoard = new Board(true);
   // console.log(playerBoard);
   playerBoard.placeShips();
 
