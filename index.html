@@ -1,0 +1,259 @@
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="_css/battleship.css">
+</head>
+<body>
+
+  <table id="enemyBoard">
+    <tr>
+      <td onclick="shootTarget(['A', 1])"></td>
+      <td onclick="shootTarget(['A', 2])"></td>
+      <td onclick="shootTarget(['A', 3])"></td>
+      <td onclick="shootTarget(['A', 4])"></td>
+      <td onclick="shootTarget(['A', 5])"></td>
+      <td onclick="shootTarget(['A', 6])"></td>
+      <td onclick="shootTarget(['A', 7])"></td>
+      <td onclick="shootTarget(['A', 8])"></td>
+      <td onclick="shootTarget(['A', 9])"></td>
+      <td onclick="shootTarget(['A', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['B', 1])"></td>
+      <td onclick="shootTarget(['B', 2])"></td>
+      <td onclick="shootTarget(['B', 3])"></td>
+      <td onclick="shootTarget(['B', 4])"></td>
+      <td onclick="shootTarget(['B', 5])"></td>
+      <td onclick="shootTarget(['B', 6])"></td>
+      <td onclick="shootTarget(['B', 7])"></td>
+      <td onclick="shootTarget(['B', 8])"></td>
+      <td onclick="shootTarget(['B', 9])"></td>
+      <td onclick="shootTarget(['B', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['C', 1])"></td>
+      <td onclick="shootTarget(['C', 2])"></td>
+      <td onclick="shootTarget(['C', 3])"></td>
+      <td onclick="shootTarget(['C', 4])"></td>
+      <td onclick="shootTarget(['C', 5])"></td>
+      <td onclick="shootTarget(['C', 6])"></td>
+      <td onclick="shootTarget(['C', 7])"></td>
+      <td onclick="shootTarget(['C', 8])"></td>
+      <td onclick="shootTarget(['C', 9])"></td>
+      <td onclick="shootTarget(['C', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['D', 1])"></td>
+      <td onclick="shootTarget(['D', 2])"></td>
+      <td onclick="shootTarget(['D', 3])"></td>
+      <td onclick="shootTarget(['D', 4])"></td>
+      <td onclick="shootTarget(['D', 5])"></td>
+      <td onclick="shootTarget(['D', 6])"></td>
+      <td onclick="shootTarget(['D', 7])"></td>
+      <td onclick="shootTarget(['D', 8])"></td>
+      <td onclick="shootTarget(['D', 9])"></td>
+      <td onclick="shootTarget(['D', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['E', 1])"></td>
+      <td onclick="shootTarget(['E', 2])"></td>
+      <td onclick="shootTarget(['E', 3])"></td>
+      <td onclick="shootTarget(['E', 4])"></td>
+      <td onclick="shootTarget(['E', 5])"></td>
+      <td onclick="shootTarget(['E', 6])"></td>
+      <td onclick="shootTarget(['E', 7])"></td>
+      <td onclick="shootTarget(['E', 8])"></td>
+      <td onclick="shootTarget(['E', 9])"></td>
+      <td onclick="shootTarget(['E', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['F', 1])"></td>
+      <td onclick="shootTarget(['F', 2])"></td>
+      <td onclick="shootTarget(['F', 3])"></td>
+      <td onclick="shootTarget(['F', 4])"></td>
+      <td onclick="shootTarget(['F', 5])"></td>
+      <td onclick="shootTarget(['F', 6])"></td>
+      <td onclick="shootTarget(['F', 7])"></td>
+      <td onclick="shootTarget(['F', 8])"></td>
+      <td onclick="shootTarget(['F', 9])"></td>
+      <td onclick="shootTarget(['F', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['G', 1])"></td>
+      <td onclick="shootTarget(['G', 2])"></td>
+      <td onclick="shootTarget(['G', 3])"></td>
+      <td onclick="shootTarget(['G', 4])"></td>
+      <td onclick="shootTarget(['G', 5])"></td>
+      <td onclick="shootTarget(['G', 6])"></td>
+      <td onclick="shootTarget(['G', 7])"></td>
+      <td onclick="shootTarget(['G', 8])"></td>
+      <td onclick="shootTarget(['G', 9])"></td>
+      <td onclick="shootTarget(['G', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['H', 1])"></td>
+      <td onclick="shootTarget(['H', 2])"></td>
+      <td onclick="shootTarget(['H', 3])"></td>
+      <td onclick="shootTarget(['H', 4])"></td>
+      <td onclick="shootTarget(['H', 5])"></td>
+      <td onclick="shootTarget(['H', 6])"></td>
+      <td onclick="shootTarget(['H', 7])"></td>
+      <td onclick="shootTarget(['H', 8])"></td>
+      <td onclick="shootTarget(['H', 9])"></td>
+      <td onclick="shootTarget(['H', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['I', 1])"></td>
+      <td onclick="shootTarget(['I', 2])"></td>
+      <td onclick="shootTarget(['I', 3])"></td>
+      <td onclick="shootTarget(['I', 4])"></td>
+      <td onclick="shootTarget(['I', 5])"></td>
+      <td onclick="shootTarget(['I', 6])"></td>
+      <td onclick="shootTarget(['I', 7])"></td>
+      <td onclick="shootTarget(['I', 8])"></td>
+      <td onclick="shootTarget(['I', 9])"></td>
+      <td onclick="shootTarget(['I', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['J', 1])"></td>
+      <td onclick="shootTarget(['J', 2])"></td>
+      <td onclick="shootTarget(['J', 3])"></td>
+      <td onclick="shootTarget(['J', 4])"></td>
+      <td onclick="shootTarget(['J', 5])"></td>
+      <td onclick="shootTarget(['J', 6])"></td>
+      <td onclick="shootTarget(['J', 7])"></td>
+      <td onclick="shootTarget(['J', 8])"></td>
+      <td onclick="shootTarget(['J', 9])"></td>
+      <td onclick="shootTarget(['J', 10])"></td>
+    </tr>
+  </table>
+
+  <table id="playerBoard">
+    <tr>
+      <td onclick="shootTarget(['A', 1])"></td>
+      <td onclick="shootTarget(['A', 2])"></td>
+      <td onclick="shootTarget(['A', 3])"></td>
+      <td onclick="shootTarget(['A', 4])"></td>
+      <td onclick="shootTarget(['A', 5])"></td>
+      <td onclick="shootTarget(['A', 6])"></td>
+      <td onclick="shootTarget(['A', 7])"></td>
+      <td onclick="shootTarget(['A', 8])"></td>
+      <td onclick="shootTarget(['A', 9])"></td>
+      <td onclick="shootTarget(['A', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['B', 1])"></td>
+      <td onclick="shootTarget(['B', 2])"></td>
+      <td onclick="shootTarget(['B', 3])"></td>
+      <td onclick="shootTarget(['B', 4])"></td>
+      <td onclick="shootTarget(['B', 5])"></td>
+      <td onclick="shootTarget(['B', 6])"></td>
+      <td onclick="shootTarget(['B', 7])"></td>
+      <td onclick="shootTarget(['B', 8])"></td>
+      <td onclick="shootTarget(['B', 9])"></td>
+      <td onclick="shootTarget(['B', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['C', 1])"></td>
+      <td onclick="shootTarget(['C', 2])"></td>
+      <td onclick="shootTarget(['C', 3])"></td>
+      <td onclick="shootTarget(['C', 4])"></td>
+      <td onclick="shootTarget(['C', 5])"></td>
+      <td onclick="shootTarget(['C', 6])"></td>
+      <td onclick="shootTarget(['C', 7])"></td>
+      <td onclick="shootTarget(['C', 8])"></td>
+      <td onclick="shootTarget(['C', 9])"></td>
+      <td onclick="shootTarget(['C', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['D', 1])"></td>
+      <td onclick="shootTarget(['D', 2])"></td>
+      <td onclick="shootTarget(['D', 3])"></td>
+      <td onclick="shootTarget(['D', 4])"></td>
+      <td onclick="shootTarget(['D', 5])"></td>
+      <td onclick="shootTarget(['D', 6])"></td>
+      <td onclick="shootTarget(['D', 7])"></td>
+      <td onclick="shootTarget(['D', 8])"></td>
+      <td onclick="shootTarget(['D', 9])"></td>
+      <td onclick="shootTarget(['D', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['E', 1])"></td>
+      <td onclick="shootTarget(['E', 2])"></td>
+      <td onclick="shootTarget(['E', 3])"></td>
+      <td onclick="shootTarget(['E', 4])"></td>
+      <td onclick="shootTarget(['E', 5])"></td>
+      <td onclick="shootTarget(['E', 6])"></td>
+      <td onclick="shootTarget(['E', 7])"></td>
+      <td onclick="shootTarget(['E', 8])"></td>
+      <td onclick="shootTarget(['E', 9])"></td>
+      <td onclick="shootTarget(['E', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['F', 1])"></td>
+      <td onclick="shootTarget(['F', 2])"></td>
+      <td onclick="shootTarget(['F', 3])"></td>
+      <td onclick="shootTarget(['F', 4])"></td>
+      <td onclick="shootTarget(['F', 5])"></td>
+      <td onclick="shootTarget(['F', 6])"></td>
+      <td onclick="shootTarget(['F', 7])"></td>
+      <td onclick="shootTarget(['F', 8])"></td>
+      <td onclick="shootTarget(['F', 9])"></td>
+      <td onclick="shootTarget(['F', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['G', 1])"></td>
+      <td onclick="shootTarget(['G', 2])"></td>
+      <td onclick="shootTarget(['G', 3])"></td>
+      <td onclick="shootTarget(['G', 4])"></td>
+      <td onclick="shootTarget(['G', 5])"></td>
+      <td onclick="shootTarget(['G', 6])"></td>
+      <td onclick="shootTarget(['G', 7])"></td>
+      <td onclick="shootTarget(['G', 8])"></td>
+      <td onclick="shootTarget(['G', 9])"></td>
+      <td onclick="shootTarget(['G', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['H', 1])"></td>
+      <td onclick="shootTarget(['H', 2])"></td>
+      <td onclick="shootTarget(['H', 3])"></td>
+      <td onclick="shootTarget(['H', 4])"></td>
+      <td onclick="shootTarget(['H', 5])"></td>
+      <td onclick="shootTarget(['H', 6])"></td>
+      <td onclick="shootTarget(['H', 7])"></td>
+      <td onclick="shootTarget(['H', 8])"></td>
+      <td onclick="shootTarget(['H', 9])"></td>
+      <td onclick="shootTarget(['H', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['I', 1])"></td>
+      <td onclick="shootTarget(['I', 2])"></td>
+      <td onclick="shootTarget(['I', 3])"></td>
+      <td onclick="shootTarget(['I', 4])"></td>
+      <td onclick="shootTarget(['I', 5])"></td>
+      <td onclick="shootTarget(['I', 6])"></td>
+      <td onclick="shootTarget(['I', 7])"></td>
+      <td onclick="shootTarget(['I', 8])"></td>
+      <td onclick="shootTarget(['I', 9])"></td>
+      <td onclick="shootTarget(['I', 10])"></td>
+    </tr>
+    <tr>
+      <td onclick="shootTarget(['J', 1])"></td>
+      <td onclick="shootTarget(['J', 2])"></td>
+      <td onclick="shootTarget(['J', 3])"></td>
+      <td onclick="shootTarget(['J', 4])"></td>
+      <td onclick="shootTarget(['J', 5])"></td>
+      <td onclick="shootTarget(['J', 6])"></td>
+      <td onclick="shootTarget(['J', 7])"></td>
+      <td onclick="shootTarget(['J', 8])"></td>
+      <td onclick="shootTarget(['J', 9])"></td>
+      <td onclick="shootTarget(['J', 10])"></td>
+    </tr>
+  </table>
+
+  <script type="text/javascript" src="_js/Board.js"></script>
+  <script type="text/javascript" src="_js/Player.js"></script>
+  <script type="text/javascript" src="_js/handler.js"></script>
+
+</body>
+</html>
