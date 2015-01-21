@@ -7,16 +7,6 @@ var Board = function(canDisplayShips) {
   this.boardArray = [];
   this.canDisplayShips = canDisplayShips;
 
-  this.shipsArr = [
-    new Ship("Aircraft Carrier", 5, []),
-    new Ship("Battleship", 4, []),
-    new Ship("Submarine", 3, []),
-    new Ship("Cruiser", 2, []),
-    new Ship("Cruiser", 2, []),
-    new Ship("Destroyer", 1, []),
-    new Ship("Destroyer", 1, [])
-  ];
-
   for (var i=0; i<10; i++) {
     this.boardArray[i] = [];
     for (var j=0; j<10; j++) {
@@ -25,23 +15,21 @@ var Board = function(canDisplayShips) {
   }
 };
 
-Board.prototype.placeShips = function() {
+Board.prototype.placeShip = function(ship) {
 
   var horizontal = this.generateRandomOrientation();
   var randCoordArr = this.generateRandomCoordinate();
   var cell = this.boardArray[randCoordArr[0]][randCoordArr[1]];
 
+  if (cell.hasShip) {
+    this.placeShips();
+  }
+
   console.log(cell);
 
   //check for all neighbors; taking into account size of ship
+  // note: currently not worrying about desired orientation; will default to horizontal
   // for (var i=0; i<this.)
-
-  console.log(this.shipsArr);
-  if (horizontal) {
-
-  }
-
-
 
 };
 

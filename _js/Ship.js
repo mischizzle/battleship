@@ -12,3 +12,6 @@ Ship.prototype.setCoordinates = function(coordinates) {
   this.coordinates = coordinates;
 };
 
+var shipTest = new Ship("test", 5, [2,3]);
+console.log(shipTest);
+

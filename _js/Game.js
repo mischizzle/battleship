@@ -7,6 +7,7 @@
 // x2 1 Patrol boat (or destroyer)
 
 var Game = function Game() {
+
 // initializes 2 boards/grids
 //  - create ships
 //  - place ships on both boards
@@ -15,6 +16,16 @@ var Game = function Game() {
 // knows when game is over
 // sets who has the turn
 // manages all game messages / feedback to player
+
+  this.shipsArr = [
+    new Ship("Aircraft Carrier", 5, []),
+    new Ship("Battleship", 4, []),
+    new Ship("Submarine", 3, []),
+    new Ship("Cruiser", 2, []),
+    new Ship("Cruiser", 2, []),
+    new Ship("Destroyer", 1, []),
+    new Ship("Destroyer", 1, [])
+  ];
 
 };
 
@@ -28,7 +39,7 @@ Game.prototype.initBoard = function(player) {
 
   var playerBoard = new Board(true);
   // console.log(playerBoard);
-  playerBoard.placeShips();
+  playerBoard.placeShip();
 
   // var enemyBoard = new Board();
   // enemyBoard.placeShips();
@@ -37,4 +48,8 @@ Game.prototype.initBoard = function(player) {
 
 Game.prototype.automateTurn = function(board) {
   // shoot random coordinate on board
-}
+};
+
+Game.prototype.keepScore = function() {
+
+};
