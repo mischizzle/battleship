@@ -7,9 +7,9 @@ var Cell = function (coordinates) {
   this.coordinates = coordinates;
 };
 
-Cell.prototype.hasShip = function () {
-  // console.log(this.ship.constructor.prototype);
-  return false;
-  // return  ( === "Ship");
-};
+// Cell.prototype.hasShip = function () {
+//   // console.log(this.ship.constructor.prototype);
+//   return false;
+//   // return  ( === "Ship");
+// };
 

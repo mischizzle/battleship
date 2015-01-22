@@ -1,15 +1,17 @@
 'use strict';
 
 var Board = function(canDisplayShips) {
+  var i,
+      j;
 
   this.width = 10;
   this.height = 10;
   this.boardArray = [];
   this.canDisplayShips = canDisplayShips;
 
-  for (var i=0; i<10; i++) {
+  for (i=0; i<10; i++) {
     this.boardArray[i] = [];
-    for (var j=0; j<10; j++) {
+    for (j=0; j<10; j++) {
       this.boardArray[i][j] = new Cell([i, j]);
     }
   }
@@ -23,19 +25,27 @@ Board.prototype.placeShip = function(ship) {
   var randCoordArr = this.generateRandomCoordinates();
   var randCell = this.boardArray[randCoordArr[0]][randCoordArr[1]];
   var placementArr = [];
+  var placementCell;
 
-  console.log(randCell);
-
-  if (randCell.hasShip) {
-    this.placeShip(ship);
-  }
+  // console.log(randCell);
 
   placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
+  // console.log(placementArr.length);
 
-  console.log("Placing the", ship.name, "on", placementArr);
-  for (var i=0; i<placementArr.length; i++) {
-
+  if (randCell.hasShip || placementArr.length === 0) {
+    console.log("Recuse...");
+    this.placeShip(ship);
+  } else {
+    console.log("Placing the", ship.name, "on", placementArr);
   }
+
+
+  // for (var i=0; i<placementArr.length; i++) {
+  //   // this.boardArray[placementArr[0][placementArr[1]];
+  //   placementCell = this.boardArray[placementArr[0]][placementArr[1]];
+  //   placementCell.hasShip = true;
+  //   placementCell.ship = ship;
+  // }
 
 
   //check for all neighbors; taking into account size of ship
@@ -56,12 +66,12 @@ Board.prototype.checkNeighborsAndReturnPlacementArr = function(coordinates, ship
       console.log(xCoord);
       shipCoordinates.push([xCoord, coordinates[1]]);
     }
-    return shipCoordinates;
+
   } else {
     console.log("Out of bounds, trying again...");
     // this.checkNeighborsAndReturnPlacementArr(coordinates, shipSize);
   }
-
+  return shipCoordinates;
 };
 
 Board.prototype.generateRandomCoordinates = function() {
