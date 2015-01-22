@@ -6,7 +6,8 @@
 <body>
 
   <p>Enemy board</p>
-  <table id="enemyBoard">
+  <div id="enemyBoard"></div>
+  <table id="enemyBoard2">
     <tr>
       <td onclick="battleship.shootTarget(['A', 1], this)"></td>
       <td onclick="battleship.shootTarget(['A', 2], this)"></td>
@@ -255,6 +256,7 @@
     </tr>
   </table>
 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script type="text/javascript" src="_js/Cell.js"></script>
   <script type="text/javascript" src="_js/Ship.js"></script>
   <script type="text/javascript" src="_js/Board.js"></script>

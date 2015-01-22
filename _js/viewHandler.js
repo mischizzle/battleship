@@ -6,6 +6,7 @@ var battleship = new Game();
 
 battleship.initBoard();
 
+
 // function shootTarget(coordinates, element) {
 //   console.log(coordinates);
 //   console.log(element);

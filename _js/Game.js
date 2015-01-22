@@ -8,6 +8,9 @@
 
 var Game = function Game() {
 
+  this.playerBoard = {};
+  this.enemyBoard = {};
+
 // initializes 2 boards/grids
 //  - create ships
 //  - place ships on both boards
@@ -31,13 +34,18 @@ var Game = function Game() {
 
 Game.prototype.initBoard = function(player) {
 
-  var playerBoard = new Board(true);
+  playerBoard = new Board(true);
   playerBoard.placeShip(this.shipsArr[0]);
+  this.drawBoard(playerBoard);
 
   // var enemyBoard = new Board();
   // enemyBoard.placeShips();
 
 };
+
+Game.prototype.drawBoard = function() {
+
+},
 
 Game.prototype.shootTarget = function(coordinates, element) {
   console.log(coordinates);

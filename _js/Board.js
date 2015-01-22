@@ -39,15 +39,6 @@ Board.prototype.placeShip = function(ship) {
     console.log("Placing the", ship.name, "on", placementArr);
   }
 
-
-  // for (var i=0; i<placementArr.length; i++) {
-  //   // this.boardArray[placementArr[0][placementArr[1]];
-  //   placementCell = this.boardArray[placementArr[0]][placementArr[1]];
-  //   placementCell.hasShip = true;
-  //   placementCell.ship = ship;
-  // }
-
-
   //check for all neighbors; taking into account size of ship
   // note: currently not worrying about desired orientation; will default to horizontal
   // for (var i=0; i<this.)
@@ -62,9 +53,7 @@ Board.prototype.checkNeighborsAndReturnPlacementArr = function(coordinates, ship
 
   if (!(coordinates[0] + shipSize > this.width)) {
     for (var i=0; i<shipSize; i++) {
-      xCoord = i + coordinates[0];
-      console.log(xCoord);
-      shipCoordinates.push([xCoord, coordinates[1]]);
+      shipCoordinates.push([i + coordinates[0], coordinates[1]]);
     }
 
   } else {
