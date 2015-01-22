@@ -18,31 +18,30 @@ var Game = function Game() {
 // manages all game messages / feedback to player
 
   this.shipsArr = [
-    new Ship("Aircraft Carrier", 5, []),
-    new Ship("Battleship", 4, []),
-    new Ship("Submarine", 3, []),
-    new Ship("Cruiser", 2, []),
-    new Ship("Cruiser", 2, []),
-    new Ship("Destroyer", 1, []),
-    new Ship("Destroyer", 1, [])
+    new Ship("Aircraft Carrier", 5),
+    new Ship("Battleship", 4),
+    new Ship("Submarine", 3),
+    new Ship("Cruiser", 2),
+    new Ship("Cruiser", 2),
+    new Ship("Destroyer", 1),
+    new Ship("Destroyer", 1)
   ];
-
-};
-
-Game.prototype.shootTarget = function(coordinates, element) {
-  console.log(coordinates);
-  console.log(element);
 
 };
 
 Game.prototype.initBoard = function(player) {
 
   var playerBoard = new Board(true);
-  // console.log(playerBoard);
-  playerBoard.placeShip();
+  playerBoard.placeShip(this.shipsArr[0]);
 
   // var enemyBoard = new Board();
   // enemyBoard.placeShips();
+
+};
+
+Game.prototype.shootTarget = function(coordinates, element) {
+  console.log(coordinates);
+  console.log(element);
 
 };
 

@@ -1,9 +1,9 @@
 'use strict';
 
-var Ship = function(name, size, orientation) {
+var Ship = function(name, size) {
   this.name = name;
   this.size = size;
-  this.orientation = orientation;
+  this.orientation = 0;
   this.discovered = false;
   this.coordinates = [];
 }
@@ -12,6 +12,6 @@ Ship.prototype.setCoordinates = function(coordinates) {
   this.coordinates = coordinates;
 };
 
-var shipTest = new Ship("test", 5, [2,3]);
-console.log(shipTest);
-
+Ship.prototype.setOrientation = function(orientation) {
+  this.orientation = orientation;
+}

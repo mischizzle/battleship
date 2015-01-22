@@ -17,15 +17,26 @@ var Board = function(canDisplayShips) {
 
 Board.prototype.placeShip = function(ship) {
 
-  var horizontal = this.generateRandomOrientation();
-  var randCoordArr = this.generateRandomCoordinate();
-  var cell = this.boardArray[randCoordArr[0]][randCoordArr[1]];
+  console.log("Placing ship:", ship);
 
-  if (cell.hasShip) {
-    this.placeShips();
+  var horizontal = this.generateRandomOrientation();
+  var randCoordArr = this.generateRandomCoordinates();
+  var randCell = this.boardArray[randCoordArr[0]][randCoordArr[1]];
+  var placementArr = [];
+
+  console.log(randCell);
+
+  if (randCell.hasShip) {
+    this.placeShip(ship);
   }
 
-  console.log(cell);
+  placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
+
+  console.log("Placing the", ship.name, "on", placementArr);
+  for (var i=0; i<placementArr.length; i++) {
+
+  }
+
 
   //check for all neighbors; taking into account size of ship
   // note: currently not worrying about desired orientation; will default to horizontal
@@ -33,13 +44,33 @@ Board.prototype.placeShip = function(ship) {
 
 };
 
-Board.prototype.generateRandomCoordinate = function() {
+//for now, only horizontal
+Board.prototype.checkNeighborsAndReturnPlacementArr = function(coordinates, shipSize) {
+
+  var shipCoordinates = [];
+  var xCoord;
+
+  if (!(coordinates[0] + shipSize > this.width)) {
+    for (var i=0; i<shipSize; i++) {
+      xCoord = i + coordinates[0];
+      console.log(xCoord);
+      shipCoordinates.push([xCoord, coordinates[1]]);
+    }
+    return shipCoordinates;
+  } else {
+    console.log("Out of bounds, trying again...");
+    // this.checkNeighborsAndReturnPlacementArr(coordinates, shipSize);
+  }
+
+};
+
+Board.prototype.generateRandomCoordinates = function() {
   return [Math.floor(Math.random() * this.width), Math.floor(Math.random() * this.width)];
 };
 
 Board.prototype.generateRandomOrientation = function() {
   return Math.round(Math.random());
-}
+};
 
 Board.prototype.engageCoordinate = function(engageCoordinate) {
   this.boardArray[engageCoordinate] = "hit";
