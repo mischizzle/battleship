@@ -34,8 +34,8 @@ var Game = function Game() {
 
 Game.prototype.initBoard = function(player) {
 
-  playerBoard = new Board(true);
-  playerBoard.placeShip(this.shipsArr[0]);
+  this.playerBoard = new Board(true);
+  this.playerBoard.placeShip(this.shipsArr[0]);
   this.drawBoard(playerBoard);
 
   // var enemyBoard = new Board();
@@ -60,3 +60,8 @@ Game.prototype.automateTurn = function(board) {
 Game.prototype.keepScore = function() {
 
 };
+
+// var playerBoard = new Board();
+// var enemyBoard = new Board();
+var battleship = new Game();
+battleship.initBoard();
