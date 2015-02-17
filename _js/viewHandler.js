@@ -27,6 +27,8 @@ LifeView.prototype.createGrid = function() {
       cell = document.createElement('td');
       checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
+      checkbox.addEventListener("click", clickHandler, false);
+      checkbox.cell = new Cell([i, j]);
       this.checkboxes[i][j] = checkbox;
 
       cell.appendChild(checkbox);
@@ -39,12 +41,9 @@ LifeView.prototype.createGrid = function() {
   this.grid.appendChild(fragment);
 }
 
-
-// function shootTarget(coordinates, element) {
-//   console.log(coordinates);
-//   console.log(element);
-//   // Game.shootTarget(coordinates)
-// }
+function clickHandler() {
+  console.log(this.cell);
+}
 
 var enemy = new LifeView(document.getElementById('enemyBoard'), 12);
 var player = new LifeView(document.getElementById('playerBoard'), 12);

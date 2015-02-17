@@ -13,3 +13,6 @@ var Cell = function (coordinates) {
 //   // return  ( === "Ship");
 // };
 
+Cell.prototype.onclick = function(evt) {
+  console.log(evt);
+}
