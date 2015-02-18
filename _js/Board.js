@@ -20,14 +20,11 @@ var Board = function(canDisplayShips) {
 Board.prototype.placeShip = function(ship) {
 
   console.log("Placing ship:", ship);
-
   var horizontal = this.generateRandomOrientation();
   var randCoordArr = this.generateRandomCoordinates();
   var randCell = this.boardArray[randCoordArr[0]][randCoordArr[1]];
   var placementArr = [];
   var placementCell;
-
-  // console.log(randCell);
 
   placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
   // console.log(placementArr.length);
@@ -42,7 +39,6 @@ Board.prototype.placeShip = function(ship) {
   //check for all neighbors; taking into account size of ship
   // note: currently not worrying about desired orientation; will default to horizontal
   // for (var i=0; i<this.)
-
 };
 
 //for now, only horizontal

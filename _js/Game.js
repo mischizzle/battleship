@@ -19,8 +19,10 @@ var Game = function Game() {
 // knows when game is over
 // sets who has the turn
 // manages all game messages / feedback to player
+};
 
-  this.shipsArr = [
+Game.prototype.ships = function () {
+  return [
     new Ship("Aircraft Carrier", 5),
     new Ship("Battleship", 4),
     new Ship("Submarine", 3),
@@ -29,39 +31,27 @@ var Game = function Game() {
     new Ship("Destroyer", 1),
     new Ship("Destroyer", 1)
   ];
-
 };
 
 Game.prototype.initBoard = function(player) {
-
+  var ships = this.ships();
   this.playerBoard = new Board(true);
-  this.playerBoard.placeShip(this.shipsArr[0]);
+  this.playerBoard.placeShip(ships[0]);
   this.drawBoard(playerBoard);
-
-  // var enemyBoard = new Board();
+  
+  // this.enemyBoard = new Board();
   // enemyBoard.placeShips();
-
 };
 
-Game.prototype.drawBoard = function() {
-
-},
+Game.prototype.drawBoard = function() {},
 
 Game.prototype.shootTarget = function(coordinates, element) {
   console.log(coordinates);
   console.log(element);
-
 };
 
 Game.prototype.automateTurn = function(board) {
   // shoot random coordinate on board
 };
 
-Game.prototype.keepScore = function() {
-
-};
-
-// var playerBoard = new Board();
-// var enemyBoard = new Board();
-var battleship = new Game();
-battleship.initBoard();
+Game.prototype.keepScore = function() {};

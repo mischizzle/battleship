@@ -1,29 +1,26 @@
 'use strict';
 
-var LifeView = function (table, size) {
+var battleship = function (table, size) {
   this.grid = table;
   this.size = size;
-
-  this.createGrid();
+  this._createGrid();
 }
 
-LifeView.prototype.createGrid = function() {
+battleship.prototype._createGrid = function() {
 
   var row,
       cell,
-      checkbox;
-  var fragment = document.createDocumentFragment();
+      checkbox,
+      fragment = document.createDocumentFragment();
 
   this.grid.innerHTML = '';
   this.checkboxes = [];
 
   for (var i=0; i<this.size; i++) {
-
     row = document.createElement('tr');
     this.checkboxes[i] = [];
 
     for (var j=0; j<this.size; j++) {
-
       cell = document.createElement('td');
       checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
@@ -34,10 +31,8 @@ LifeView.prototype.createGrid = function() {
       cell.appendChild(checkbox);
       row.appendChild(cell);
     }
-
     fragment.appendChild(row);
   }
-
   this.grid.appendChild(fragment);
 }
 
@@ -45,6 +40,11 @@ function clickHandler() {
   console.log(this.cell);
 }
 
-var enemy = new LifeView(document.getElementById('enemyBoard'), 12);
-var player = new LifeView(document.getElementById('playerBoard'), 12);
+var enemy = new battleship(document.getElementById('enemyBoard'), 12);
+var player = new battleship(document.getElementById('playerBoard'), 12);
+
+// var playerBoard = new Board();
+// var enemyBoard = new Board();
+var battleship = new Game();
+battleship.initBoard();
 
