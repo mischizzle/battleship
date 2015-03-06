@@ -30,12 +30,10 @@ var Game = function Game() {
 
 Game.prototype.initBoards = function(player) {
 
-  // this.playerBoard = new Board(true);
-  // this.playerBoard.populateBoard(10, 10);
-  // this.playerBoard.placeShip(this.ships[0]);
+  var enemyBoard = new Board(document.getElementById('enemyBoard'), 12, false);
+  var playerBoard = new Board(document.getElementById('playerBoard'), 12, true);
 
-  var enemyBoard = new Board(document.getElementById('enemyBoard'), 12);
-  var playerBoard = new Board(document.getElementById('playerBoard'), 12);
+  enemyBoard.placeShip(this.ships[0]);
 };
 
 

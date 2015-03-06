@@ -1,16 +1,9 @@
 'use strict';
 
-// var Board = function(canDisplayShips) {
-//   var i,
-//       j;
-
-//   this.width = 10;
-//   this.height = 10;
-//   this.board = [];
-//   this.canDisplayShips = canDisplayShips;
-
-// };
 var Board = function (table, size, canDisplayShips) {
+  this.table = table;
+  this.canDisplayShips = canDisplayShips;
+
   var row,
       cell,
       checkbox,
@@ -33,7 +26,7 @@ var Board = function (table, size, canDisplayShips) {
     }
     fragment.appendChild(row);
   }
-  table.appendChild(fragment);
+  this.table.appendChild(fragment);
 };
 
 Board.prototype.clickHandler = function () {
@@ -42,21 +35,21 @@ Board.prototype.clickHandler = function () {
 
 Board.prototype.placeShip = function (ship) {
 
-  // console.log("Placing ship:", ship);
+  console.log("Placing ship:", ship);
   // var horizontal = this.generateRandomOrientation();
-  // var randCoordArr = this.generateRandomCoordinates();
-  // var randCell = this.board[randCoordArr[0]][randCoordArr[1]];
-  // var placementArr = [];
-  // var placementCell;
+  var randCoordArr = this.generateRandomCoordinates();
+  var randCell = this.board[randCoordArr[0]][randCoordArr[1]];
+  var placementArr = [];
+  var placementCell;
 
-  // placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
+  placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
 
-  // if (randCell.hasShip || placementArr.length === 0) {
-  //   console.log("Recurse...");
-  //   this.placeShip(ship);
-  // } else {
-  //   console.log("Placing the", ship.name, "on", placementArr);
-  // }
+  if (randCell.hasShip || !placementArr.length) {
+    console.log("Recurse...");
+    this.placeShip(ship);
+  } else {
+    console.log("Placing the", ship.name, "on", placementArr);
+  }
 
   //check for all neighbors; taking into account size of ship
   // note: currently not worrying about desired orientation; will default to horizontal
