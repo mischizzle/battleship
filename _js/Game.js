@@ -1,28 +1,23 @@
 'use strict';
 
-// x1 5 Aircraft carrier
-// x1 4 Battleship
-// x1 3 Submarine
-// x2 2 Destroyer (or Cruiser)
-// x2 1 Patrol boat (or destroyer)
-
-var Game = function Game() {
-
-  this.playerBoard = {};
-  this.enemyBoard = {};
-
 // initializes 2 boards/grids
 //  - create ships
-//  - place ships on both boards
+//  - place ships on enemy board
 // initializes 1 player (?)
 // handles user input --> game logic
 // knows when game is over
 // sets who has the turn
 // manages all game messages / feedback to player
-};
 
-Game.prototype.ships = function () {
-  return [
+var Game = function Game() {
+
+  //playerBoard will place their own ships..
+  this.playerBoard = {};
+
+  //ships are placed automatically..
+  this.enemyBoard = {};
+
+  this.ships = [
     new Ship("Aircraft Carrier", 5),
     new Ship("Battleship", 4),
     new Ship("Submarine", 3),
@@ -33,25 +28,24 @@ Game.prototype.ships = function () {
   ];
 };
 
-Game.prototype.initBoard = function(player) {
-  var ships = this.ships();
-  this.playerBoard = new Board(true);
-  this.playerBoard.placeShip(ships[0]);
-  this.drawBoard(playerBoard);
-  
-  // this.enemyBoard = new Board();
-  // enemyBoard.placeShips();
+Game.prototype.initBoards = function(player) {
+
+  // this.playerBoard = new Board(true);
+  // this.playerBoard.populateBoard(10, 10);
+  // this.playerBoard.placeShip(this.ships[0]);
+
+  var enemyBoard = new Board(document.getElementById('enemyBoard'), 12);
+  var playerBoard = new Board(document.getElementById('playerBoard'), 12);
 };
 
-Game.prototype.drawBoard = function() {},
 
-Game.prototype.shootTarget = function(coordinates, element) {
-  console.log(coordinates);
-  console.log(element);
-};
+// Game.prototype.shootTarget = function(coordinates, element) {
+//   console.log(coordinates);
+//   console.log(element);
+// };
 
-Game.prototype.automateTurn = function(board) {
-  // shoot random coordinate on board
-};
+// Game.prototype.automateTurn = function(board) {
+//   // shoot random coordinate on board
+// };
 
-Game.prototype.keepScore = function() {};
+// Game.prototype.keepScore = function() {};

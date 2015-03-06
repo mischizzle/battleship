@@ -13,13 +13,16 @@
   <p>Player board</p>
   <table id="playerBoard"></table>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
   <script type="text/javascript" src="_js/Cell.js"></script>
   <script type="text/javascript" src="_js/Ship.js"></script>
   <script type="text/javascript" src="_js/Board.js"></script>
   <script type="text/javascript" src="_js/Game.js"></script>
-  <script type="text/javascript" src="_js/Player.js"></script>
-  <script type="text/javascript" src="_js/battleship.js"></script>
+
+  <script type="text/javascript">
+    var battleship = new Game();
+    battleship.initBoards();
+  </script>
 
 </body>
 </html>

@@ -1,49 +1,71 @@
 'use strict';
 
-var Board = function(canDisplayShips) {
-  var i,
-      j;
+// var Board = function(canDisplayShips) {
+//   var i,
+//       j;
 
-  this.width = 10;
-  this.height = 10;
-  this.boardArray = [];
-  this.canDisplayShips = canDisplayShips;
+//   this.width = 10;
+//   this.height = 10;
+//   this.board = [];
+//   this.canDisplayShips = canDisplayShips;
 
-  for (i=0; i<10; i++) {
-    this.boardArray[i] = [];
-    for (j=0; j<10; j++) {
-      this.boardArray[i][j] = new Cell([i, j]);
+// };
+var Board = function (table, size, canDisplayShips) {
+  var row,
+      cell,
+      checkbox,
+      fragment = document.createDocumentFragment(),
+      checkboxes = [];
+
+  for (var i=0; i<size; i++) {
+    row = document.createElement('tr');
+    checkboxes[i] = [];
+
+    for (var j=0; j<size; j++) {
+      cell = document.createElement('td');
+      checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.addEventListener("click", this.clickHandler, false);
+      checkbox.cell = new Cell([i, j]);
+      checkboxes[i][j] = checkbox;
+      cell.appendChild(checkbox);
+      row.appendChild(cell);
     }
+    fragment.appendChild(row);
   }
+  table.appendChild(fragment);
 };
 
-Board.prototype.placeShip = function(ship) {
+Board.prototype.clickHandler = function () {
+  console.log(this.cell);
+}
 
-  console.log("Placing ship:", ship);
-  var horizontal = this.generateRandomOrientation();
-  var randCoordArr = this.generateRandomCoordinates();
-  var randCell = this.boardArray[randCoordArr[0]][randCoordArr[1]];
-  var placementArr = [];
-  var placementCell;
+Board.prototype.placeShip = function (ship) {
 
-  placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
-  // console.log(placementArr.length);
+  // console.log("Placing ship:", ship);
+  // var horizontal = this.generateRandomOrientation();
+  // var randCoordArr = this.generateRandomCoordinates();
+  // var randCell = this.board[randCoordArr[0]][randCoordArr[1]];
+  // var placementArr = [];
+  // var placementCell;
 
-  if (randCell.hasShip || placementArr.length === 0) {
-    console.log("Recuse...");
-    this.placeShip(ship);
-  } else {
-    console.log("Placing the", ship.name, "on", placementArr);
-  }
+  // placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
+
+  // if (randCell.hasShip || placementArr.length === 0) {
+  //   console.log("Recurse...");
+  //   this.placeShip(ship);
+  // } else {
+  //   console.log("Placing the", ship.name, "on", placementArr);
+  // }
 
   //check for all neighbors; taking into account size of ship
   // note: currently not worrying about desired orientation; will default to horizontal
   // for (var i=0; i<this.)
 };
 
-//for now, only horizontal
-Board.prototype.checkNeighborsAndReturnPlacementArr = function(coordinates, shipSize) {
 
+//for now, only horizontal
+Board.prototype.checkNeighborsAndReturnPlacementArr = function (coordinates, shipSize) {
   var shipCoordinates = [];
   var xCoord;
 
@@ -59,16 +81,14 @@ Board.prototype.checkNeighborsAndReturnPlacementArr = function(coordinates, ship
   return shipCoordinates;
 };
 
-Board.prototype.generateRandomCoordinates = function() {
+Board.prototype.generateRandomCoordinates = function () {
   return [Math.floor(Math.random() * this.width), Math.floor(Math.random() * this.width)];
 };
 
-Board.prototype.generateRandomOrientation = function() {
+Board.prototype.generateRandomOrientation = function () {
   return Math.round(Math.random());
 };
 
-Board.prototype.engageCoordinate = function(engageCoordinate) {
-  this.boardArray[engageCoordinate] = "hit";
+Board.prototype.engageCoordinate = function (engageCoordinate) {
+  this.board[engageCoordinate] = "hit";
 };
-
-
