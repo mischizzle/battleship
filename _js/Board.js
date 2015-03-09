@@ -3,6 +3,7 @@
 var Board = function (table, size, canDisplayShips) {
   this.table = table;
   this.canDisplayShips = canDisplayShips;
+  this.size = size;
 
   var row,
       cell,
@@ -18,7 +19,7 @@ var Board = function (table, size, canDisplayShips) {
       cell = document.createElement('td');
       checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
-      checkbox.addEventListener("click", this.clickHandler, false);
+      checkbox.addEventListener("click", this.clickHandler(this), false);
       checkbox.cell = new Cell([i, j]);
       checkboxes[i][j] = checkbox;
       cell.appendChild(checkbox);
@@ -29,8 +30,9 @@ var Board = function (table, size, canDisplayShips) {
   this.table.appendChild(fragment);
 };
 
-Board.prototype.clickHandler = function () {
+Board.prototype.clickHandler = function (board) {
   console.log(this.cell);
+  console.log(this.cell.coordinates);
 }
 
 Board.prototype.placeShip = function (ship) {
@@ -38,7 +40,7 @@ Board.prototype.placeShip = function (ship) {
   console.log("Placing ship:", ship);
   // var horizontal = this.generateRandomOrientation();
   var randCoordArr = this.generateRandomCoordinates();
-  var randCell = this.board[randCoordArr[0]][randCoordArr[1]];
+  var randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]];
   var placementArr = [];
   var placementCell;
 
@@ -51,7 +53,7 @@ Board.prototype.placeShip = function (ship) {
     console.log("Placing the", ship.name, "on", placementArr);
   }
 
-  //check for all neighbors; taking into account size of ship
+  // check for all neighbors; taking into account size of ship
   // note: currently not worrying about desired orientation; will default to horizontal
   // for (var i=0; i<this.)
 };
@@ -62,7 +64,7 @@ Board.prototype.checkNeighborsAndReturnPlacementArr = function (coordinates, shi
   var shipCoordinates = [];
   var xCoord;
 
-  if (!(coordinates[0] + shipSize > this.width)) {
+  if (!(coordinates[0] + shipSize > this.size)) {
     for (var i=0; i<shipSize; i++) {
       shipCoordinates.push([i + coordinates[0], coordinates[1]]);
     }
@@ -75,7 +77,7 @@ Board.prototype.checkNeighborsAndReturnPlacementArr = function (coordinates, shi
 };
 
 Board.prototype.generateRandomCoordinates = function () {
-  return [Math.floor(Math.random() * this.width), Math.floor(Math.random() * this.width)];
+  return [Math.floor(Math.random() * this.size), Math.floor(Math.random() * this.size)];
 };
 
 Board.prototype.generateRandomOrientation = function () {
