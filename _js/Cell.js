@@ -13,6 +13,10 @@ var Cell = function (coordinates) {
 //   // return  ( === "Ship");
 // };
 
+Cell.prototype.setShip = function (ship) {
+  this.ship = ship;
+}
+
 Cell.prototype.onclick = function(evt) {
   console.log(evt);
 }

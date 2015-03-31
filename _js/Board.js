@@ -9,19 +9,21 @@ var Board = function (table, size, canDisplayShips) {
       cell,
       checkbox,
       fragment = document.createDocumentFragment(),
-      checkboxes = [];
+      checkboxes = [],
+      x,
+      y;
 
-  for (var i=0; i<size; i++) {
+  for (y=0; y<size; y++) {
     row = document.createElement('tr');
-    checkboxes[i] = [];
+    checkboxes[y] = [];
 
-    for (var j=0; j<size; j++) {
+    for (x=0; x<size; x++) {
       cell = document.createElement('td');
       checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
-      checkbox.addEventListener("click", this.clickHandler(this), false);
-      checkbox.cell = new Cell([i, j]);
-      checkboxes[i][j] = checkbox;
+      checkbox.cell = new Cell([y, x]);
+      checkbox.addEventListener("click", this.clickHandler, false);
+      checkboxes[y][x] = checkbox;
       cell.appendChild(checkbox);
       row.appendChild(cell);
     }
@@ -30,19 +32,29 @@ var Board = function (table, size, canDisplayShips) {
   this.table.appendChild(fragment);
 };
 
-Board.prototype.clickHandler = function (board) {
+Board.prototype.clickHandler = function () {
   console.log(this.cell);
-  console.log(this.cell.coordinates);
+
+  if (this.cell.hasShip) {
+    console.log("Hit!");
+  } else {
+    console.log("Miss...");
+    console.log(this.cell.coordinates);
+  }
 }
 
 Board.prototype.placeShip = function (ship) {
 
   console.log("Placing ship:", ship);
   // var horizontal = this.generateRandomOrientation();
-  var randCoordArr = this.generateRandomCoordinates();
-  var randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]];
-  var placementArr = [];
-  var placementCell;
+  var randCoordArr = this.generateRandomCoordinates(),
+      randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]].children[0].cell,
+      placementArr = [],
+      placementCell,
+      i;
+
+  console.log("Random cell"); 
+  console.log(randCell);
 
   placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
 
@@ -51,6 +63,11 @@ Board.prototype.placeShip = function (ship) {
     this.placeShip(ship);
   } else {
     console.log("Placing the", ship.name, "on", placementArr);
+    for (i=0; i<placementArr.length; i++) {
+      this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell.hasShip = true;
+      this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell.setShip(ship.name);
+      console.log(this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell);
+    }
   }
 
   // check for all neighbors; taking into account size of ship
@@ -61,11 +78,12 @@ Board.prototype.placeShip = function (ship) {
 
 //for now, only horizontal
 Board.prototype.checkNeighborsAndReturnPlacementArr = function (coordinates, shipSize) {
-  var shipCoordinates = [];
-  var xCoord;
+  var shipCoordinates = [],
+      xCoord,
+      i;
 
-  if (!(coordinates[0] + shipSize > this.size)) {
-    for (var i=0; i<shipSize; i++) {
+  if (!(coordinates[0]+shipSize > this.size)) {
+    for (i=0; i<shipSize; i++) {
       shipCoordinates.push([i + coordinates[0], coordinates[1]]);
     }
 
