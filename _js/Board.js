@@ -33,10 +33,11 @@ var Board = function (table, size, canDisplayShips) {
 };
 
 Board.prototype.clickHandler = function () {
-  console.log(this.cell);
+  console.log(this);
 
   if (this.cell.hasShip) {
     console.log("Hit!");
+    this.className = "hit";
   } else {
     console.log("Miss...");
     console.log(this.cell.coordinates);
@@ -51,9 +52,10 @@ Board.prototype.placeShip = function (ship) {
       randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]].children[0].cell,
       placementArr = [],
       placementCell,
+
       i;
 
-  console.log("Random cell"); 
+  console.log("Random cell");
   console.log(randCell);
 
   placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
@@ -64,9 +66,9 @@ Board.prototype.placeShip = function (ship) {
   } else {
     console.log("Placing the", ship.name, "on", placementArr);
     for (i=0; i<placementArr.length; i++) {
-      this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell.hasShip = true;
-      this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell.setShip(ship.name);
-      console.log(this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell);
+      placementCell = this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell;
+      placementCell.hasShip = true;
+      placementCell.setShip(ship.name);
     }
   }
 
