@@ -47,18 +47,17 @@ Board.prototype.clickHandler = function () {
 Board.prototype.placeShip = function (ship) {
 
   console.log("Placing ship:", ship);
-  // var horizontal = this.generateRandomOrientation();
-  var randCoordArr = this.generateRandomCoordinates(),
+  // var horizontal = _generateRandomOrientation();
+  var randCoordArr = _generateRandomCoordinates(this.size),
       randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]].children[0].cell,
       placementArr = [],
       placementCell,
-
       i;
 
   console.log("Random cell");
   console.log(randCell);
 
-  placementArr = this.checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size);
+  placementArr = _checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size, this.size);
 
   if (randCell.hasShip || !placementArr.length) {
     console.log("Recurse...");
@@ -79,12 +78,12 @@ Board.prototype.placeShip = function (ship) {
 
 
 //for now, only horizontal
-Board.prototype.checkNeighborsAndReturnPlacementArr = function (coordinates, shipSize) {
+function _checkNeighborsAndReturnPlacementArr (coordinates, shipSize, size) {
   var shipCoordinates = [],
       xCoord,
       i;
 
-  if (!(coordinates[0]+shipSize > this.size)) {
+  if (!(coordinates[0]+shipSize > size)) {
     for (i=0; i<shipSize; i++) {
       shipCoordinates.push([i + coordinates[0], coordinates[1]]);
     }
@@ -96,14 +95,14 @@ Board.prototype.checkNeighborsAndReturnPlacementArr = function (coordinates, shi
   return shipCoordinates;
 };
 
-Board.prototype.generateRandomCoordinates = function () {
-  return [Math.floor(Math.random() * this.size), Math.floor(Math.random() * this.size)];
+function _generateRandomCoordinates (size) {
+  return [Math.floor(Math.random() * size), Math.floor(Math.random() * size)];
 };
 
-Board.prototype.generateRandomOrientation = function () {
+function _generateRandomOrientation () {
   return Math.round(Math.random());
 };
 
-Board.prototype.engageCoordinate = function (engageCoordinate) {
-  this.board[engageCoordinate] = "hit";
-};
+// Board.prototype.engageCoordinate = function (engageCoordinate) {
+//   this.board[engageCoordinate] = "hit";
+// };
