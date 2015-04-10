@@ -33,8 +33,6 @@ var Board = function (table, size, canDisplayShips) {
 };
 
 Board.prototype.clickHandler = function () {
-  console.log(this);
-
   if (this.cell.hasShip) {
     console.log("Hit!");
     this.className = "hit";
@@ -45,7 +43,6 @@ Board.prototype.clickHandler = function () {
 }
 
 Board.prototype.placeShip = function (ship) {
-
   console.log("Placing ship:", ship);
   // var horizontal = _generateRandomOrientation();
   var randCoordArr = _generateRandomCoordinates(this.size),
@@ -53,9 +50,6 @@ Board.prototype.placeShip = function (ship) {
       placementArr = [],
       placementCell,
       i;
-
-  console.log("Random cell");
-  console.log(randCell);
 
   placementArr = _checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size, this.size);
 
@@ -70,12 +64,7 @@ Board.prototype.placeShip = function (ship) {
       placementCell.setShip(ship.name);
     }
   }
-
-  // check for all neighbors; taking into account size of ship
-  // note: currently not worrying about desired orientation; will default to horizontal
-  // for (var i=0; i<this.)
 };
-
 
 //for now, only horizontal
 function _checkNeighborsAndReturnPlacementArr (coordinates, shipSize, size) {
@@ -87,7 +76,6 @@ function _checkNeighborsAndReturnPlacementArr (coordinates, shipSize, size) {
     for (i=0; i<shipSize; i++) {
       shipCoordinates.push([i + coordinates[0], coordinates[1]]);
     }
-
   } else {
     console.log("Out of bounds, trying again...");
     // this.checkNeighborsAndReturnPlacementArr(coordinates, shipSize);
@@ -102,7 +90,3 @@ function _generateRandomCoordinates (size) {
 function _generateRandomOrientation () {
   return Math.round(Math.random());
 };
-
-// Board.prototype.engageCoordinate = function (engageCoordinate) {
-//   this.board[engageCoordinate] = "hit";
-// };

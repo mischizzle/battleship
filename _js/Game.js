@@ -33,7 +33,9 @@ Game.prototype.initBoards = function(player) {
   var enemyBoard = new Board(document.getElementById('enemyBoard'), 12, false);
   var playerBoard = new Board(document.getElementById('playerBoard'), 12, true);
 
-  enemyBoard.placeShip(this.ships[0]);
+  for (var i=0; i<this.ships.length; i++) {
+    enemyBoard.placeShip(this.ships[i]);
+  }
 };
 
 
