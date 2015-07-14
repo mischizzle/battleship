@@ -48,6 +48,7 @@ Board.prototype.placeShip = function (ship) {
   var randCoordArr = _generateRandomCoordinates(this.size),
       randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]].children[0].cell,
       placementArr = [],
+      placementEl,
       placementCell,
       i;
 
@@ -59,9 +60,13 @@ Board.prototype.placeShip = function (ship) {
   } else {
     console.log("Placing the", ship.name, "on", placementArr);
     for (i=0; i<placementArr.length; i++) {
-      placementCell = this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0].cell;
+      placementEl = this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0];
+      placementCell = placementEl.cell
       placementCell.hasShip = true;
       placementCell.setShip(ship.name);
+      
+      //for debug: seeing the enemy ships.
+      placementEl.style.backgroundColor = '#cdcdcd';
     }
   }
 };
