@@ -13,6 +13,7 @@ var Board = function (table, size, canDisplayShips) {
       x,
       y;
 
+  //create the battleship grid for a player 
   for (y=0; y<size; y++) {
     row = document.createElement('tr');
     checkboxes[y] = [];
@@ -42,25 +43,43 @@ Board.prototype.clickHandler = function () {
   }
 }
 
-Board.prototype.placeShip = function (ship) {
-  console.log("Placing ship:", ship);
-  // var horizontal = _generateRandomOrientation();
-  var randCoordArr = _generateRandomCoordinates(this.size),
-      randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]].children[0].cell,
+Board.prototype.placeShip = function (ship, shipCoordinates) {
+  var randCoordArr,
+      randCell,
       placementArr = [],
       placementEl,
       placementCell,
-      i;
+      i,
+      that = this;
 
-  placementArr = _checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size, this.size);
+  console.log("Placing ship:", ship);
 
-  if (randCell.hasShip || !placementArr.length) {
-    console.log("Recurse...");
-    this.placeShip(ship);
+  if(shipCoordinates) {
+
+    insertIntoGrid(shipCoordinates);
+
   } else {
-    console.log("Placing the", ship.name, "on", placementArr);
-    for (i=0; i<placementArr.length; i++) {
-      placementEl = this.table.children[placementArr[i][0]].children[placementArr[i][1]].children[0];
+
+    randCoordArr = _generateRandomCoordinates(this.size),
+    randCell = this.table.children[randCoordArr[0]].children[randCoordArr[1]].children[0].cell,
+    placementArr = _checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size, this.size);
+
+    if (randCell.hasShip || !placementArr.length) {
+
+      console.log("Recurse...");
+      this.placeShip(ship);
+    } else {
+
+      console.log(placementArr);
+      insertIntoGrid(placementArr);
+      
+    }
+  }
+
+  //local functions
+  function insertIntoGrid(arr) {
+    for (i=0; i<arr.length; i++) {
+      placementEl = that.table.children[arr[i][0]].children[arr[i][1]].children[0];
       placementCell = placementEl.cell
       placementCell.hasShip = true;
       placementCell.setShip(ship.name);
