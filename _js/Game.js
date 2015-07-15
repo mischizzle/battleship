@@ -48,6 +48,16 @@ Game.prototype.initBoards = function(player) {
 
 };
 
+Game.prototype.stepThroughShipPlacement = function() {
+  var currStep = 1;
+
+  // for (var i=0; i<this.ships.length; i++) {
+    
+  // }
+}
+
+
+
 
 // Game.prototype.shootTarget = function(coordinates, element) {
 //   console.log(coordinates);

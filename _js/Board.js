@@ -21,10 +21,12 @@ var Board = function (table, size, canDisplayShips) {
     for (x=0; x<size; x++) {
       cell = document.createElement('td');
       checkbox = document.createElement('input');
+      
       checkbox.type = 'checkbox';
       checkbox.cell = new Cell([y, x]);
       checkbox.addEventListener("click", this.clickHandler, false);
       checkboxes[y][x] = checkbox;
+
       cell.appendChild(checkbox);
       row.appendChild(cell);
     }
@@ -70,7 +72,6 @@ Board.prototype.placeShip = function (ship, shipCoordinates) {
       this.placeShip(ship);
     } else {
 
-      console.log(placementArr);
       insertIntoGrid(placementArr);
       
     }
