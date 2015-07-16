@@ -21,10 +21,10 @@ var Game = function Game() {
     new Ship("Aircraft Carrier", 5)
     // new Ship("Battleship", 4),
     // new Ship("Submarine", 3),
-    // new Ship("Cruiser", 2),
-    // new Ship("Cruiser", 2),
-    // new Ship("Destroyer", 1),
-    // new Ship("Destroyer", 1)
+    // new Ship("Destroyer", 3),
+    // new Ship("Destroyer", 3),
+    // new Ship("Patrol boat", 2),
+    // new Ship("Patrol boat", 2)
   ];
 };
 
@@ -45,6 +45,9 @@ Game.prototype.initBoards = function(player) {
   //temp: place player ships with set coordinates 
   playerBoard.placeShip(this.ships[0], [[0,0], [0,1], [0,2], [0,3], [0,4]] );
 
+  this.makeShipClickable('aircraftCarrier');
+  this.makeShipClickable('battleship');
+
 
 };
 
@@ -55,6 +58,15 @@ Game.prototype.stepThroughShipPlacement = function() {
     
   // }
 }
+
+Game.prototype.makeShipClickable = function(shipId) {
+  var shipEl = document.getElementById(shipId);
+  shipEl.onmousedown = function() {
+    console.log("you clicked on ", shipId);
+  }
+}
+
+
 
 
 

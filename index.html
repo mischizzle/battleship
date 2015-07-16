@@ -5,26 +5,51 @@
 </head>
 <body>
 
-  <button>New Game</button>
+<h1>Battleship</h1>
 
-  <div>
+  <div class="info">
     <p>Place your ships:</p>
 
-    <p>Aircraft carrier</p>
-    <p>Battleship</p>
-    <p>Submarine</p>
-    <p>Cruiser x2</p>
-    <p>Destroyer x2</p>
+    <div class="boats">
+      <span>Aircraft carrier</span>
+      <div id="aircraftCarrier" class="ship aircraftCarrier"></div>
+    </div>
+
+    <div class="boats">
+      Battleship
+      <div id="battleship" class="ship battleship"></div>
+    </div>
+
+    <div class="boats">
+      Submarine
+      <div id="submarine" class="ship submarine"></div>
+    </div>
+
+    <div class="boats">
+      Destroyer x2
+      <div id="cruiser1" class="ship destroyer"></div>
+      <br/>
+      <div id="cruiser2" class="ship destroyer"></div>
+    </div>
+
+    <div class="boats">
+      Patrol boat x2
+      <div id="patrol1" class="ship patrol"></div>
+      <br/>
+      <div id="patrol2" class="ship patrol"></div>
+    </div>
 
   </div>
 
-  <p>Enemy board</p>
-  <table id="enemyBoard"></table>
+  <div class="game"> 
+    <p>Enemy board</p>
+    <table id="enemyBoard"></table>
 
-  <hr />
+    <hr />
 
-  <p>Player board</p>
-  <table id="playerBoard"></table>
+    <p>Player board</p>
+    <table id="playerBoard"></table>
+  </div>
 
   <script type="text/javascript" src="_js/Cell.js"></script>
   <script type="text/javascript" src="_js/Ship.js"></script>
