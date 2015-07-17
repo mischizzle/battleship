@@ -56,9 +56,11 @@ hr {
 
 .info .boats {
   margin: 10px 0 5px 0;
+  position: relative;
 }
 
 .ship {
+  position: absolute;
   background-color: black;
   height: 20px;
   -moz-border-radius: 4px;
