@@ -57,6 +57,7 @@ hr {
 .info .boats {
   margin: 10px 0 5px 0;
   position: relative;
+  height: 50px;
 }
 
 .ship {
