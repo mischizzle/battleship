@@ -50,7 +50,6 @@ Game.prototype.initBoards = function(player) {
 
 };
 
-makeClickable(document.getElementById('aircraftCarrier'));
 
 // Game.prototype.stepThroughShipPlacement = function() {
 //   var currStep = 1;
