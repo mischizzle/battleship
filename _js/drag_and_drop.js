@@ -1,10 +1,11 @@
 
 
 var ship1 = document.getElementById('aircraftCarrier');
-var dropDiv = document.getElementById('testDrop')
+var testDropDiv = document.getElementById('testDrop')
 
 var dragShip = null;
 var isDraggable = false;
+var isInDropzone = false;
 
 
 // makeClickable(ship1);
@@ -29,10 +30,9 @@ function mouseMoveListener(e) {
   // console.log(e.pageX)
   
   if(isDraggable) {
-    console.log("X: ", x, " Y: ", y);
      
-    dragShip.style.left = x - 20; 
-    dragShip.style.top = y - 20; 
+    dragShip.style.left = x - 50; 
+    dragShip.style.top = y -25; 
 
     hasDroppedInContainer(x, y);
   } 
@@ -41,13 +41,32 @@ function mouseMoveListener(e) {
 function mouseUpListener(e) {
   console.log("mouse up");
   isDraggable = false;
+  testDropDiv.classList.remove("dropZoneEnabled");
+
+  if (isInDropzone) {
+    testDropDiv.classList.add("dropZoneSet");
+    console.log("dz set");
+  } else {
+    console.log("dz not set");
+  }
 }
 
 function hasDroppedInContainer(x, y) {
-  var boundRect = dropDiv.getBoundingClientRect();
-  // var dropX = 
-  console.log("bound rect");
-  console.log(boundRect);
+  var boundRect = testDropDiv.getBoundingClientRect();
+  
+  // console.log("X: ", x, " Y: ", y);
+
+  if ( (x <= (boundRect.left + boundRect.width) && x >= boundRect.left) && (y <= (boundRect.top + boundRect.height) && y >= boundRect.top) )   {
+    console.log("inside the drop div");
+    testDropDiv.classList.add("dropZoneEnabled");
+    isInDropzone = true;
+  } else {
+    testDropDiv.classList.remove("dropZoneEnabled");
+    isInDropzone = false;
+  }
+
+  // console.log("bound rect");
+  // console.log(boundRect);
 }
 
 

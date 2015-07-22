@@ -44,16 +44,6 @@ hr {
   margin: 20px 0;
 }
 
-#testDrop {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 300px;
-  left: 500px;
-  background-color: #cdcdcd;
-  z-index: 1;
-}
-
 .info, 
 .game {
   display: inline-block;
@@ -100,4 +90,24 @@ hr {
 
 .patrol {
   width: 40px;
+}
+
+#testDrop {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 300px;
+  left: 500px;
+  background-color: #cdcdcd;
+  z-index: 1;
+}
+
+.dropZoneEnabled {
+  -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
+}
+
+.dropZoneSet {
+  background-color: #666666 !important;
 }
