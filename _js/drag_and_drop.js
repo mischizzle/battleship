@@ -1,18 +1,7 @@
-
-
-var ship1 = document.getElementById('aircraftCarrier');
-var testDropDiv = document.getElementById('testDrop');
-
 var dragShip = null;
 var dragShipWidth, dragShipHeight;
 var isDraggable = false;
 var isInDropzone = false;
-
-
-// makeClickable(ship1);
-ship1.addEventListener('mousedown', clickListener);
-document.addEventListener('mousemove', mouseMoveListener);
-document.addEventListener('mouseup', mouseUpListener);
 
 // Capturing click event
 function clickListener (event){
@@ -28,7 +17,7 @@ function clickListener (event){
 
 
 //Capturing the mouse movement
-function mouseMoveListener (e) {
+function mouseMoveListener (e, contaierArr) {
   var x = e.clientX;
   var y = e.clientY;
 
@@ -36,7 +25,7 @@ function mouseMoveListener (e) {
     dragShip.style.left = x - (dragShipWidth/2);
     dragShip.style.top = y - 145;
 
-    if (hasDroppedInContainer(x, y)) {
+    if (hasDroppedInContainer(x, y, contaierArr)) {
       testDropDiv.classList.add("dropZoneEnabled");
       isInDropzone = true;
     } else {
@@ -46,22 +35,24 @@ function mouseMoveListener (e) {
   } 
 }
 
-function mouseUpListener (e) {
+function mouseUpListener (e, containerArr) {
   console.log("mouse up");
   isDraggable = false;
-  testDropDiv.classList.remove("dropZoneEnabled");
+  containerArr.classList.remove("dropZoneEnabled");
 
   if (isInDropzone) {
-    testDropDiv.classList.add("dropZoneSet");
-    // centerShip(ship1, testDropDiv);
+    containerArr.classList.add("dropZoneSet");
+    // centerShip(ship1, containerArr);
   }
 }
 
-function hasDroppedInContainer (x, y) {
-  var boundRect = testDropDiv.getBoundingClientRect();
+function hasDroppedInContainer (x, y, containerArr) {
+  var boundRect = containerArr.getBoundingClientRect();
     return (x <= (boundRect.left + boundRect.width) && x >= boundRect.left) && (y <= (boundRect.top + boundRect.height) && y >= boundRect.top);
 }
 
 // function centerShip () {
 
 // }
+
+

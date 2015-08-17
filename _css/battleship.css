@@ -44,15 +44,13 @@ hr {
   margin: 20px 0;
 }
 
-.info, 
-.game {
-  display: inline-block;
-  width: 100%;
-  height: 500px;
+.info {
+  float:left;
 }
 
+#playerBoard,
 .info {
-  text-align: left;
+  display: inline-block;
 }
 
 .info .boats {

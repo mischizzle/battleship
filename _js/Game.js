@@ -34,8 +34,8 @@ Game.prototype.getPlayerName = function() {
 
 Game.prototype.initBoards = function(player) {
 
-  // var enemyBoard = new Board(document.getElementById('enemyBoard'), 12, false);
-  // var playerBoard = new Board(document.getElementById('playerBoard'), 12, true);
+   var enemyBoard = new Board(document.getElementById('enemyBoard'), 12, false);
+   var playerBoard = new Board(document.getElementById('playerBoard'), 12, true);
 
   //place enemy board without coordinates
   // for (var i=0; i<this.ships.length; i++) {
