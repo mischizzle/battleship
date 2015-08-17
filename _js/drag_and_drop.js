@@ -17,20 +17,27 @@ function clickListener (event){
 
 
 //Capturing the mouse movement
-function mouseMoveListener (e, contaierArr) {
+function mouseMoveListener (e) {
   var x = e.clientX;
   var y = e.clientY;
+  var container;
 
   if(isDraggable) {
     dragShip.style.left = x - (dragShipWidth/2);
-    dragShip.style.top = y - 145;
+    dragShip.style.top = y - (dragShipHeight/2);
 
-    if (hasDroppedInContainer(x, y, contaierArr)) {
-      testDropDiv.classList.add("dropZoneEnabled");
-      isInDropzone = true;
-    } else {
-      testDropDiv.classList.remove("dropZoneEnabled");
-      isInDropzone = false;
+
+    for(var i=0; i<battleship.dropTargets.length; i++) {
+      container = battleship.dropTargets[i];
+      if (hasDroppedInContainer(x, y, container)) {
+        console.log(container);
+        container.classList.add("dropZoneEnabled");
+        isInDropzone = true;
+      } else {
+        console.log("not in drop zone", container);
+        container.classList.remove("dropZoneEnabled");
+        isInDropzone = false;
+      }
     }
   } 
 }
@@ -46,9 +53,9 @@ function mouseUpListener (e, containerArr) {
   }
 }
 
-function hasDroppedInContainer (x, y, containerArr) {
-  var boundRect = containerArr.getBoundingClientRect();
-    return (x <= (boundRect.left + boundRect.width) && x >= boundRect.left) && (y <= (boundRect.top + boundRect.height) && y >= boundRect.top);
+function hasDroppedInContainer (x, y, container) {
+  var boundRect = container.getBoundingClientRect();
+  return (x <= (boundRect.left + boundRect.width) && x >= boundRect.left) && (y <= (boundRect.top + boundRect.height) && y >= boundRect.top);
 }
 
 // function centerShip () {

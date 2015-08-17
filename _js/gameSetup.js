@@ -2,25 +2,27 @@
 /** Initialize all parts of the game here **/
 
 var battleship = new Game();
-var containerArr = [];
 var playerBoard;
 var dropTargets;
+var ship;
+
 battleship.initBoards();
 
 
 /** things to drop into **/
 playerBoard = document.getElementById('playerBoard');
 
-dropTargets = convertTableCellsIntoFlatArray(playerBoard);
-console.log(dropTargets);
+battleship.dropTargets = convertTableCellsIntoFlatArray(playerBoard);
 
-/** things to move **/
-var ship1 = document.getElementById('aircraftCarrier');
 
-ship1.addEventListener('mousedown', clickListener);
-ship1.addEventListener('mousemove', mouseMoveListener, dropTargets);
-ship1.addEventListener('mouseup', mouseUpListener, dropTargets);
-
+/** things to drag **/
+console.log(battleship.ships);
+for(var i=0; i<battleship.ships.length; i++) {
+  ship = document.getElementById(battleship.ships[i].id);
+  ship.addEventListener('mousedown', clickListener);
+  ship.addEventListener('mousemove', mouseMoveListener);
+  ship.addEventListener('mouseup', mouseUpListener);
+}
 
 
 /** utility functionz **/

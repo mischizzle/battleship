@@ -18,13 +18,13 @@ var Game = function Game() {
   this.enemyBoard = {};
 
   this.ships = [
-    new Ship("Aircraft Carrier", 5)
-    // new Ship("Battleship", 4),
-    // new Ship("Submarine", 3),
-    // new Ship("Destroyer", 3),
-    // new Ship("Destroyer", 3),
-    // new Ship("Patrol boat", 2),
-    // new Ship("Patrol boat", 2)
+    new Ship("Aircraft Carrier", 5, "aircraftCarrier")
+    // new Ship("Battleship", 4, battleship),
+    // new Ship("Submarine", 3, submarine),
+    // new Ship("Cruiser", 3, cruiser1),
+    // new Ship("Cruiser", 3, cruiser2),
+    // new Ship("Patrol boat", 2, patrol1),
+    // new Ship("Patrol boat", 2, patrol2)
   ];
 };
 
