@@ -27,9 +27,9 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   display: block;
-  width: 20px;
-  height: 20px;
-  background: white;
+  width: 25px;
+  height: 25px;
+  /*background: white;*/
 }
 
 input[type="checkbox"]:checked {
@@ -44,8 +44,35 @@ hr {
   margin: 20px 0;
 }
 
+
+
+.ships {
+  width: 150px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
+.ships span {
+  display: block;
+
+}
+
+.hidden {
+  display: none !important;
+}
+
+.game {
+  display: inline-block;
+}
+
 .info {
   float:left;
+}
+
+.info p {
+  font-weight: bold;
+  padding: 0 0 20px 0;
 }
 
 #playerBoard,
@@ -70,7 +97,7 @@ hr {
 }
 
 .aircraftCarrier {
-  width: 100px;
+  width: 95px;
   z-index: 2;
 }
 
@@ -100,12 +127,32 @@ hr {
   z-index: 1;
 }
 
-.dropZoneEnabled {
-  -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
+button {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
 }
 
-.dropZoneSet {
-  background-color: #666666 !important;
+button:hover {
+  background-color: #cdcdcd;
 }
+

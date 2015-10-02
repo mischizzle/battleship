@@ -2,65 +2,84 @@
 <head>
   <title></title>
   <link rel="stylesheet" type="text/css" href="_css/battleship.css">
+  <link rel="stylesheet" type="text/css" href="_css/drag_and_drop.css">
 </head>
 <body>
 
 <h1>Battleship</h1>
 
-<div id="aircraftCarrier" class="ship aircraftCarrier"></div>
+<div class="ships">
 
+  <div class="info">
 
+    <p>Place your ships:</p>
 
-
-  <div class="game">
-    <p>Enemy board</p>
-    <table id="enemyBoard"></table>
-
-    <hr />
-
-    <p>Player board</p>
-    <div class="info">
-      <p>Place your ships:</p>
-
-      <div class="boats">
-        <span>Aircraft carrier</span>
-
-      </div>
-
-      <div class="boats">
-        Battleship
-        <div id="battleship" class="ship battleship"></div>
-      </div>
-
-      <div class="boats">
-        Submarine
-        <div id="submarine" class="ship submarine"></div>
-      </div>
-
-      <div class="boats">
-        Destroyer x2
-        <div id="cruiser1" class="ship destroyer"></div>
-        <br/>
-        <div id="cruiser2" class="ship destroyer"></div>
-      </div>
-
-      <div class="boats">
-        Patrol boat x2
-        <div id="patrol1" class="ship patrol"></div>
-        <br/>
-        <div id="patrol2" class="ship patrol"></div>
-      </div>
+    <div id="step1">
+      <span>Aircraft carrier</span>
+      <div id="aircraftCarrier" class="ship aircraftCarrier"></div>
     </div>
-    <table id="playerBoard"></table>
+
+    <div id="step2" class="hidden">
+      <span>Battleship</span>
+      <div id="battleship" class="ship battleship"></div>
+    </div>
+
+    <div id="step3" class="hidden">
+      <span class="hidden">Submarine</span>
+      <div id="submarine" class="ship submarine hidden"></div>
+    </div>
+
+    <div id="step4" class="hidden">
+      <span class="hidden">Cruisers</span>
+      <div id="cruiser1" class="ship destroyer hidden"></div>
+      <br/>
+      <div id="cruiser2" class="ship destroyer hidden"></div>
+    </div>
+
+    <div id="step5" class="hidden">
+      <span class="hidden">Patrol Boats</span>
+      <div id="patrol1" class="ship patrol hidden"></div>
+      <br/>
+      <div id="patrol2" class="ship patrol hidden"></div>
+    </div>
+
   </div>
 
+  <button id="nextStep" style="margin-top: 100px; width: 100px; ">Next ship</button>
 
-  <script type="text/javascript" src="_js/drag_and_drop.js"></script>
-  <script type="text/javascript" src="_js/Cell.js"></script>
-  <script type="text/javascript" src="_js/Ship.js"></script>
-  <script type="text/javascript" src="_js/Board.js"></script>
-  <script type="text/javascript" src="_js/Game.js"></script>
-  <script type="text/javascript" src="_js/gameSetup.js"></script>
+</div>
+
+
+
+<div class="game">
+
+  <p>Player board</p>
+  <table id="playerBoard"></table>
+
+  <hr />
+
+  <p>Enemy board</p>
+  <table id="enemyBoard"></table>
+
+</div>
+
+<!-- RX library -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.0.0/rx.lite.js"></script>
+<script type="text/javascript" src="_js/dragDropRx.js"></script>
+
+<script type="text/javascript" src="_js/Cell.js"></script>
+<script type="text/javascript" src="_js/Ship.js"></script>
+<script type="text/javascript" src="_js/Board.js"></script>
+<script type="text/javascript" src="_js/Game.js"></script>
+
+<!-- Main battleship file; initializes all parts-->
+<script type="text/javascript" src="_js/gameSetup.js"></script>
+
+
+
+
+
+
 
 </body>
 </html>
