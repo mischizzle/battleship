@@ -1,8 +1,8 @@
 'use strict';
 
-var Board = function (table, size, canDisplayShips) {
+var Board = function (table, size, canHit) {
   this.table = table;
-  this.canDisplayShips = canDisplayShips;
+  this.canHit = canHit;
   this.size = size;
 
   var row,
@@ -24,7 +24,11 @@ var Board = function (table, size, canDisplayShips) {
       
       checkbox.type = 'checkbox';
       checkbox.cell = new Cell([y, x]);
-      checkbox.addEventListener("click", this.clickHandler, false);
+
+      if(canHit) {
+        checkbox.addEventListener("click", this.clickHandler, false);
+      }
+
       checkboxes[y][x] = checkbox;
 
       cell.appendChild(checkbox);
@@ -43,7 +47,7 @@ Board.prototype.clickHandler = function () {
     console.log("Miss...");
     console.log(this.cell.coordinates);
   }
-}
+};
 
 Board.prototype.placeShip = function (ship, shipCoordinates) {
   var randCoordArr,
@@ -54,7 +58,7 @@ Board.prototype.placeShip = function (ship, shipCoordinates) {
       i,
       that = this;
 
-  console.log("Placing ship:", ship);
+  //console.log("Placing ship:", ship, "into:", shipCoordinates);
 
   if(shipCoordinates) {
 
@@ -67,13 +71,10 @@ Board.prototype.placeShip = function (ship, shipCoordinates) {
     placementArr = _checkNeighborsAndReturnPlacementArr(randCoordArr, ship.size, this.size);
 
     if (randCell.hasShip || !placementArr.length) {
-
-      console.log("Recurse...");
+      //console.log("Recurse...");
       this.placeShip(ship);
     } else {
-
       insertIntoGrid(placementArr);
-      
     }
   }
 
@@ -81,12 +82,12 @@ Board.prototype.placeShip = function (ship, shipCoordinates) {
   function insertIntoGrid(arr) {
     for (i=0; i<arr.length; i++) {
       placementEl = that.table.children[arr[i][0]].children[arr[i][1]].children[0];
-      placementCell = placementEl.cell
+      placementCell = placementEl.cell;
       placementCell.hasShip = true;
       placementCell.setShip(ship.name);
       
       //for debug: seeing the enemy ships.
-      placementEl.style.backgroundColor = '#cdcdcd';
+      //placementEl.style.backgroundColor = '#cdcdcd';
     }
   }
 };

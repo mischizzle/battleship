@@ -11,12 +11,6 @@
 
 var Game = function Game() {
 
-  //playerBoard will place their own ships..
-  this.playerBoard = {};
-
-  //ships are placed automatically..
-  this.enemyBoard = {};
-
   this.ships = [
     new Ship("Aircraft Carrier", 5, "aircraftCarrier"),
     new Ship("Battleship", 4, "battleship"),
@@ -26,46 +20,26 @@ var Game = function Game() {
     new Ship("Patrol boat", 2, "patrol1"),
     new Ship("Patrol boat", 2, "patrol2")
   ];
+
+  //ships are placed automatically..
+  this.enemyBoard = new Board(document.getElementById('enemyBoard'), 12, true);
+
+  //playerBoard will place their own ships..
+  this.playerBoard = new Board(document.getElementById('playerBoard'), 12, false);
+
 };
 
 Game.prototype.getPlayerName = function() {
   //ask player name
-}
-
-Game.prototype.initBoards = function(player) {
-
-   var enemyBoard = new Board(document.getElementById('enemyBoard'), 12, false);
-   var playerBoard = new Board(document.getElementById('playerBoard'), 12, true);
-
-  //place enemy board without coordinates
-  // for (var i=0; i<this.ships.length; i++) {
-  //   enemyBoard.placeShip(this.ships[i]);
-  // }
-
-  //temp: place player ships with set coordinates 
-  // playerBoard.placeShip(this.ships[0], [[0,0], [0,1], [0,2], [0,3], [0,4]] );
-
-  // this.makeShipClickable('aircraftCarrier');
-  // this.makeShipClickable('battleship');
-
 };
 
+Game.prototype.placeShipsAutomatically = function(board) {
 
-// Game.prototype.stepThroughShipPlacement = function() {
-//   var currStep = 1;
-
-//   // for (var i=0; i<this.ships.length; i++) {
-    
-//   // }
-// }
-
-// Game.prototype.makeShipClickable = function(shipId) {
-
-//   var shipEl = document.getElementById(shipId);
-
-//   shipEl.addEventListener('mousedown', drag);
-// }
-
+  //place enemy board without coordinates
+  for (var i=0; i<this.ships.length; i++) {
+    board.placeShip(this.ships[i]);
+  }
+};
 
 // Game.prototype.shootTarget = function(coordinates, element) {
 //   console.log(coordinates);
@@ -77,3 +51,6 @@ Game.prototype.initBoards = function(player) {
 // };
 
 // Game.prototype.keepScore = function() {};
+
+
+

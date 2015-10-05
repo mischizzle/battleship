@@ -12,43 +12,26 @@
 
   <div class="info">
 
+    <p id="msg"></p>
+
     <p>Place your ships:</p>
 
-    <div id="step1">
-      <span>Aircraft carrier</span>
-      <div id="aircraftCarrier" class="ship aircraftCarrier"></div>
-    </div>
+    <div id="aircraftCarrier" class="ship"></div>
 
-    <div id="step2" class="hidden">
-      <span>Battleship</span>
-      <div id="battleship" class="ship battleship"></div>
-    </div>
+    <div id="battleship" class="ship"></div>
 
-    <div id="step3" class="hidden">
-      <span class="hidden">Submarine</span>
-      <div id="submarine" class="ship submarine hidden"></div>
-    </div>
+    <div id="submarine" class="ship"></div>
 
-    <div id="step4" class="hidden">
-      <span class="hidden">Cruisers</span>
-      <div id="cruiser1" class="ship destroyer hidden"></div>
-      <br/>
-      <div id="cruiser2" class="ship destroyer hidden"></div>
-    </div>
+    <div id="cruiser1" class="ship"></div>
 
-    <div id="step5" class="hidden">
-      <span class="hidden">Patrol Boats</span>
-      <div id="patrol1" class="ship patrol hidden"></div>
-      <br/>
-      <div id="patrol2" class="ship patrol hidden"></div>
-    </div>
+    <div id="cruiser2" class="ship"></div>
 
+    <div id="patrol1" class="ship"></div>
+
+    <div id="patrol2" class="ship"></div>
   </div>
 
-  <button id="nextStep" style="margin-top: 100px; width: 100px; ">Next ship</button>
-
 </div>
-
 
 
 <div class="game">
@@ -60,6 +43,10 @@
 
   <p>Enemy board</p>
   <table id="enemyBoard"></table>
+
+  <br/>
+
+  <button id="play">Start game</button>
 
 </div>
 

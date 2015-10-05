@@ -2,13 +2,15 @@
 
 function dragAndDrop(dragTarget, dropTargets) {
 
+  //console.log("inisialize targets", dragTarget);
 
-// Get the three major events
-  var mouseup = Rx.Observable.fromEvent(dragTarget, 'mouseup', dropEl);
-  var mousemove = Rx.Observable.fromEvent(document, 'mousemove');
-  var mousedown = Rx.Observable.fromEvent(dragTarget, 'mousedown');
 
-//var mouseover = Rx.Observable.fromEvent(dropTarget, 'mouseover');
+  // Get the three major events
+  var mouseup = Rx.Observable.fromEvent(dragTarget, 'mouseup', dropEl),
+      mousemove = Rx.Observable.fromEvent(document, 'mousemove'),
+      mousedown = Rx.Observable.fromEvent(dragTarget, 'mousedown'),
+      subscription,
+      coordinates = [];
 
   var mousedrag = mousedown.flatMap(function (md) {
 
@@ -18,9 +20,9 @@ function dragAndDrop(dragTarget, dropTargets) {
     //calculate delta with mousemove until mouseup
     return mousemove.map(function (mm) {
 
-      var mm_x = mm.clientX - startX;
-      var mm_y = mm.clientY - startY;
-      var dropCoords = dragTarget.getBoundingClientRect();
+      var mm_x = mm.clientX - startX,
+          mm_y = mm.clientY - startY,
+          dropCoords = dragTarget.getBoundingClientRect();
 
       mm.preventDefault();
 
@@ -33,8 +35,8 @@ function dragAndDrop(dragTarget, dropTargets) {
     }).takeUntil(mouseup);
   });
 
-// Update position
-  mousedrag.subscribe(function (pos) {
+  // Update position
+  subscription =  mousedrag.subscribe(function (pos) {
     dragTarget.style.top = pos.top + 'px';
     dragTarget.style.left = pos.left + 'px';
   });
@@ -42,29 +44,42 @@ function dragAndDrop(dragTarget, dropTargets) {
 
   function detectHover(left, top, right, bottom) {
 
-    var cellCoords;
+    //empty again to reset
+    coordinates = [];
 
     for (var i = 0; i < dropTargets.length; i++) {
       cellCoords = dropTargets[i].getBoundingClientRect();
 
-      //if(left > c0.left && right > c0.right) {
       if (right >= Math.floor(cellCoords.left) && left <= Math.floor(cellCoords.right) && top >= Math.floor(cellCoords.top) && bottom <= Math.floor(cellCoords.bottom)) {
-        //if(right >= Math.floor(cellCoords.left) && left <= Math.floor(cellCoords.right) && top <= Math.floor(cellCoords.bottom) && bottom >= Math.floor(cellCoords.top)) {
-
         dropTargets[i].classList.add("dropZoneEnabled");
+        //dropTargets[i].shipId = dragTarget.srcElement.id;
+        //console.log(dropTargets[i].firstElementChild.cell);
+        coordinates.push(dropTargets[i].firstElementChild.cell.coordinates);
       } else {
         dropTargets[i].classList.remove("dropZoneEnabled");
+        dropTargets[i].shipId = "";
       }
     }
   }
 
   function dropEl(dragTarget) {
 
-    //if(inDropZone(dragTarget.x, dragTarget.y, dropTarget)) {
-    //  //placeShip();
-    //} else {
-    //  //resetToStartingPosition(dragTarget);
-    //}
+    var cellWidth = dropTargets[0].clientWidth;
+    var cellDropTotal = Math.ceil(dragTarget.srcElement.clientWidth / cellWidth);
+
+    console.log(typeof coordinates.length);
+    console.log(typeof cellDropTotal);
+
+    if(coordinates.length === cellDropTotal){
+      console.log("placed", dragTarget.srcElement.id);
+      subscription.dispose();
+    } else {
+      console.log("please place ship correctly");
+    }
+  }
+
+  function snapIntoPosition() {
+    //function used to center placed ship into place
   }
 
 //function inDropZone (x, y, dropTarget) {
@@ -78,8 +93,6 @@ function dragAndDrop(dragTarget, dropTargets) {
 //  el.style.left = 0;
 //}
 //
-//function snapIntoPosition() {
-//  //function used to center placed ship into place
-//}
+
 
 }
